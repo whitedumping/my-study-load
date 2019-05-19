@@ -1,0 +1,16 @@
+初次使用deep系统，尝试使用命令行安装codeblock，想试一下命令行，其实可以直接在应用商店下载/安装
+首先在codeblock官网下载Linux版本的codeblock，本次下载的为codeblocks_17.12-1_amd64_stable.tar.xz
+打开命令行找到当前下载文件的目录，解压，tar -xvf 文件名
+网上教程是需要先安装编译器，gcc，g++;
+  sudo apt-get install gcc
+  sudo apt-get install g++
+之后安装，出现部分依赖为安装的错误
+  使用apt-get -f install ××× 强制安装，会自动安装依赖包
+或者解压后的deb文件安装
+  sudo dpkg -i ×.deb
+  提示缺少依赖，安装依赖
+  sudo apt-get -f -y install
+  重新使用dpkg安装deb包
+  sudo dpkg -i ×.deb
+之后命令行输入codeblocks可以打开cb了
+ps：卸载命令 sudo apt autoremove xxx
