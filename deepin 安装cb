@@ -14,3 +14,7 @@
   sudo dpkg -i ×.deb
 之后命令行输入codeblocks可以打开cb了
 ps：卸载命令 sudo apt autoremove xxx
+
+好像还要执行这操作，添加依赖
+apt-get install python-software-properties
+apt-get install software-properties-common
