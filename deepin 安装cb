@@ -18,3 +18,8 @@ ps：卸载命令 sudo apt autoremove xxx
 好像还要执行这操作，添加依赖
 apt-get install python-software-properties
 apt-get install software-properties-common
+
+首次codeblocks运行编程题的小问题，运行后的终端无法直接黏贴输入数据
+  deepin环境下是Setting==>Environment...==>General Setting==>Terminal to lanuch console programs:
+  选择gnome-terminal -t $TITLE -x 
+  然后见gnome改成deepin
