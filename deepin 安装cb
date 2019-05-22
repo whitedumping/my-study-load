@@ -23,3 +23,6 @@ apt-get install software-properties-common
   deepin环境下是Setting==>Environment...==>General Setting==>Terminal to lanuch console programs:
   选择gnome-terminal -t $TITLE -x 
   然后见gnome改成deepin
+
+设置cb的为暗色背景时，光标也是黑色，容易看不清
+  设置为白色：Setting->Editor ->Margins and caret  caret下的Colour项中修改光标颜色
