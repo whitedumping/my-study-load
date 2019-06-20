@@ -1,0 +1,58 @@
+回溯法为基本的算法，属于暴力法，回溯算法的基本思想是：从一条路往前走，能进则进，不能进则退回来，换一条路再试。
+他人原文：https://blog.csdn.net/Dby_freedom/article/details/82933845 
+模板为
+public void backtracking(int n,int k,int start,List<Integer> list){
+        if(k<0)        return;
+        else if(k==0){
+            //k==0表示已经找到了k个数字的组合，这时候加入全局result中
+            result.add(new ArrayList(list));
+ 
+        }else{
+            for(int i=start;i<=n;i++){
+                list.add(i);    //尝试性的加入i
+                //开始回溯啦，下一次要找的数字减少一个所以用k-1，i+1见后面分析
+                backtracking(n,k-1,i+1,list);
+                //（留白，有用=。=）
+            }
+        }
+    }
+}
+
+实例：leetcode的组数总和,https://leetcode-cn.com/problems/combination-sum
+给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+candidates 中的数字可以无限制重复被选取。
+说明：
+所有数字（包括 target）都是正整数。
+解集不能包含重复的组合
+实例输入: candidates = [2,3,6,7], target = 7,
+所求解集为:
+[
+  [7],
+  [2,2,3]
+]
+
+vector<vector<int>> res;
+vector<int> candidates;
+//回溯需要使用一个开始标识，并以此标识来进行回溯
+void backtrack(int start, int target, vector<int>& temp){
+    if(target < 0) return;
+    else if(target == 0){//回溯结束条件
+        res.push_back(vector<int> {temp.begin(), temp.end()});
+        return;
+    }else{
+        //依次选取每一个可能的组合数，该处可配合使用剪枝，因为数组已经排序，若加入某一个数后大于target那之后的数便可以跳过
+        for(int i = start; i < candidates.size(); i++){
+            temp.push_back(candidates[i]);
+            backtrack(i, target - candidates[i], temp);
+            temp.pop_back();
+        }
+    }
+}
+
+vector<vector<int>> combinationSum(vector<int>& c, int target) {
+    candidates = c;
+    sort(candidates.begin(), candidates.end());
+    vector<int> temp;
+    backtrack(0, target, temp);
+    return res;
+}
