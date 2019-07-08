@@ -1,0 +1,17 @@
+具体查看：http://wiki.codeblocks.org/index.php/Pretty_Printers
+codeblock 17.12，调试是无法查看vector的里面元素的值，使用的cb自带的mingw
+
+解决方法：
+在codeblock的安装目录D:\CodeBlocks\MinGW\bin下面添加xxx.gdb文件
+
+文件内容：文件中的目录要存在
+python
+import sys
+sys.path.insert(0, 'D:/CodeBlocks/MinGW/share/gcc-5.1.0/python/libstdcxx/v6')
+from printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
+end
+
+在codeblock的设置：Codeblocks->Settings->Debugger->Default->Debugger initialization commands
+添加source D:\CodeBlocks\MinGW\bin\xxx.gdb
+并取消第一个勾（disable startup scripts）
